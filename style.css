@@ -55,7 +55,7 @@ input, select { font-family: inherit; }
   object-fit: contain;
 }
 .loading-logo-img {
-  width: 300px;       /* atur ukuran logo */
+  width: 250px;       /* atur ukuran logo */
   height: auto;
   display: block;
   margin: 0 auto 10px auto; /* posisi tengah + jarak ke teks */
