@@ -13,7 +13,7 @@
 // ================================================================
 const CONFIG = {
   // Google Apps Script Web App URL
-  GAS_URL: 'https://script.google.com/macros/s/AKfycbz1PTi2JOLE9Ii5VTDJUvk5KQP4kqIl1HuzP64VkLuBzsPR_AWbxaCbrS04URimnABr/exec',
+  GAS_URL: 'https://script.google.com/macros/s/AKfycbz4Ruy0eQO6-0OEpX5doUgvpd8JZw8M7J83HvRtAYHob4b604IZWypAsUALpPN9dc2H/exec',
 
   // iLovePDF API Keys
   ILP_PUBLIC_KEY: 'project_public_6d5baa10da2e6fd19b4167a1fc7ed3aa_6xLV19b7cef2e9d285248d9dd933edf15d0c7',
