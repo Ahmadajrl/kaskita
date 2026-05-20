@@ -591,3 +591,206 @@ input, select { font-family: inherit; }
   .page-title { font-size:22px; }
   .ilovepdf-banner { flex-direction:column; align-items:flex-start; gap:12px; }
 }
+/* =======================================================
+   RESPONSIVE MOBILE
+   ======================================================= */
+
+@media screen and (max-width:768px){
+
+/* =====================
+   Sidebar
+===================== */
+
+.sidebar{
+
+    position:fixed;
+
+    left:-280px;
+
+    top:0;
+
+    width:280px;
+
+    height:100vh;
+
+    z-index:1000;
+
+    transition:0.3s;
+}
+
+.sidebar.active{
+
+    left:0;
+}
+
+/* =====================
+   Main content
+===================== */
+
+.main-content{
+
+    margin-left:0 !important;
+
+    width:100%;
+}
+
+
+/* =====================
+   Topbar
+===================== */
+
+.topbar{
+
+    padding:10px;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.topbar-title{
+
+    width:100%;
+}
+
+.topbar-right{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+
+/* =====================
+   Dashboard card
+===================== */
+
+.dashboard-cards{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:15px;
+}
+
+.card{
+
+    width:100%;
+}
+
+
+/* =====================
+   Chart
+===================== */
+
+.chart-container{
+
+    width:100%;
+
+    overflow-x:auto;
+}
+
+
+/* =====================
+   Tables
+===================== */
+
+.table-container{
+
+    overflow-x:auto;
+}
+
+
+/* =====================
+   Form input
+===================== */
+
+.form-row{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.form-group{
+
+    width:100%;
+}
+
+
+/* =====================
+   AI Notification
+===================== */
+
+.notification-dropdown{
+
+    width:260px;
+
+    right:-50px;
+}
+
+
+/* =====================
+   User chip
+===================== */
+
+.topbar-user-chip{
+
+    max-width:130px;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+/* =====================
+   Buttons
+===================== */
+
+button{
+
+    width:100%;
+}
+
+}
+
+
+/* =======================================================
+   EXTRA SMALL PHONE
+   ======================================================= */
+
+@media screen and (max-width:480px){
+
+.topbar-time{
+
+    display:none;
+}
+
+.topbar-user-chip span{
+
+    display:none;
+}
+
+.notification-dropdown{
+
+    width:220px;
+}
+
+.card h2{
+
+    font-size:20px;
+}
+
+}
