@@ -1,0 +1,176 @@
+/* scanner-animation.css - Hologram & Glassmorphism Animation */
+
+/* Overlay untuk scanner UI */
+.scanner-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 15, 30, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.scanner-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Container utama scanner */
+.scanner-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 20px;
+    background: rgba(20, 30, 50, 0.5);
+    border: 2px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.1), inset 0 0 20px rgba(0, 240, 255, 0.05);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Gambar yang sedang discan */
+.scanner-image {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    border-radius: 12px;
+    filter: drop-shadow(0 0 10px rgba(0,255,255,0.2)) contrast(1.2) sepia(0.3) hue-rotate(180deg) saturate(2);
+    opacity: 0.8;
+}
+
+/* Garis Scan Vertikal / Horizontal */
+.scanner-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+    box-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+    animation: scanAnimation 2s linear infinite;
+}
+
+/* Garis Hologram Grid */
+.scanner-grid {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+      linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 2;
+    animation: pulseGrid 4s infinite alternate;
+}
+
+/* Teks Status Scanning */
+.scanner-status {
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #00f0ff;
+    text-shadow: 0 0 8px #00f0ff;
+    animation: pulseText 1.5s infinite;
+}
+
+/* Progress Text (%) */
+.scanner-progress {
+    margin-top: 8px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 15px #00f0ff;
+}
+
+/* Hasil Akhir Animasi (Cocok / Tidak Cocok) */
+.scanner-overlay.success .scanner-container {
+    border-color: #00ff88;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.2), inset 0 0 20px rgba(0, 255, 136, 0.1);
+}
+.scanner-overlay.success .scanner-line {
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+    box-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88;
+    animation: none;
+    top: 50%;
+    opacity: 0;
+}
+.scanner-overlay.success .scanner-status {
+    color: #00ff88;
+    text-shadow: 0 0 10px #00ff88;
+    animation: none;
+}
+.scanner-overlay.success .scanner-progress {
+    color: #00ff88;
+}
+
+.scanner-overlay.error .scanner-container {
+    border-color: #ff3366;
+    box-shadow: 0 0 30px rgba(255, 51, 102, 0.2), inset 0 0 20px rgba(255, 51, 102, 0.1);
+}
+.scanner-overlay.error .scanner-line {
+    background: linear-gradient(90deg, transparent, #ff3366, transparent);
+    box-shadow: 0 0 15px #ff3366, 0 0 30px #ff3366;
+    animation: errorShake 0.5s;
+    top: 50%;
+    opacity: 0;
+}
+.scanner-overlay.error .scanner-status {
+    color: #ff3366;
+    text-shadow: 0 0 10px #ff3366;
+    animation: none;
+}
+.scanner-overlay.error .scanner-progress {
+    color: #ff3366;
+}
+
+/* Keyframes */
+@keyframes scanAnimation {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes pulseGrid {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.8; }
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+
+/* Target Reticle Corners */
+.scanner-corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 3px solid transparent;
+    z-index: 3;
+}
+.corner-tl { top: 10px; left: 10px; border-top-color: #00f0ff; border-left-color: #00f0ff; }
+.corner-tr { top: 10px; right: 10px; border-top-color: #00f0ff; border-right-color: #00f0ff; }
+.corner-bl { bottom: 10px; left: 10px; border-bottom-color: #00f0ff; border-left-color: #00f0ff; }
+.corner-br { bottom: 10px; right: 10px; border-bottom-color: #00f0ff; border-right-color: #00f0ff; }
+
+.scanner-overlay.success .scanner-corner { border-color: #00ff88; }
+.scanner-overlay.error .scanner-corner { border-color: #ff3366; }
